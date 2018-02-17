@@ -1,0 +1,17 @@
+<%= form_for @payment do |f| %>
+<p>
+  日付: <%= f.date_field :payment_date %>
+</p>
+<p>
+  カテゴリー: <%= f.collection_select :category_id, Category.all, :id, :category_name %>
+</p>
+<p>
+  金額: <%= f.number_field :amount_of_money %>
+</p>
+<p>
+  メモ: <%= f.text_field :memo %>
+</p>
+<p>
+  <%= f.submit('保存') %>
+</p>
+<% end %>

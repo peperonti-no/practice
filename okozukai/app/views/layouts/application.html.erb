@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>OkozukaiViewer</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div class='title'>おこづかいViewer</div>
+    <div class='tabs'>
+      <%= link_to '一覧', payments_path, class: 'tab'%>
+      <%= link_to '登録', new_payment_path, class: 'tab'%>
+      <%= link_to 'グラフ', graph_payments_path, class: 'tab'%>
+      <%= link_to '設定', payments_path, class: 'tab'%>
+    </div>
+    <div class='container'>
+      <%= yield %>
+    </div>
+  </body>
+</html>

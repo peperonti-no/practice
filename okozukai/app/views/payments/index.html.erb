@@ -1,0 +1,37 @@
+<%= stylesheet_link_tag 'payments/list', media: 'all' %>
+
+<table>
+  <thead>
+    <tr>
+      <th class='date'>日付</th>
+      <th class='category'>カテゴリー</th>
+      <th class='money'>金額</th>
+      <th class='memo'>メモ</th>
+      <th class='delete'></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @payments.each do |payment| %>
+    <tr>
+      <td class='date'>
+        <%= payment.payment_date.strftime('%Y/%m/%d') %>
+      </td>
+      <td class='category'>
+        <%= Category.find(payment.category_id).category_name %>
+      </td>
+      <td class='money'>
+        <%= link_to payment.amount_of_money, payment_path(payment) %>
+      </td>
+      <td class='memo'>
+        <%= payment.memo %>
+      </td>
+      <td class='delete'>
+        <%= link_to '[x]',
+            payment_path(payment),
+            method: :delete,
+            data: { confirm: '削除します。よろしいですか？' } %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
